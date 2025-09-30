@@ -1,0 +1,30 @@
+- hosts: servers
+  become: yes
+  tasks:
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+        update_cache: true
+
+    - name: Clone repo
+      git:
+        repo: 'https://github.com/Shishant90/Ubuntu-Setup.sh.git'
+        dest: /opt/myapp
+        version: main
+
+    - name: Build Docker image
+      community.docker.docker_image:
+        build: yes
+        path: /opt/myapp
+        name: myapp
+        tag: latest
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: myapp
+        image: myapp:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"

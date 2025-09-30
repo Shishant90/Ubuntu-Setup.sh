@@ -1,0 +1,4 @@
+#cloud-config
+runcmd:
+  - [ bash, -c, "curl -fsSL https://raw.githubusercontent.com/yourusername/yourrepo/main/setup.sh -o /tmp/setup.sh || true" ]
+  - [ bash, -c, "chmod +x /tmp/setup.sh && /tmp/setup.sh || true" ]
