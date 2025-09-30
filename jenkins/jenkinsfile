@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+    stage('Checkout') {
+        steps { checkout scm }
+    }
+    stage('Build') {
+        steps { sh 'docker build -t myapp:${BUILD_NUMBER} .' }
+    }
+    stage('Deploy') {
+        steps {
+        sshagent(['server-ssh']) {
+            sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@YOUR_SERVER:/home/ubuntu/'
+            sh 'ssh ubuntu@YOUR_SERVER "docker compose -f ~/docker-compose.yml pull || true && docker compose -f ~/docker-compose.yml up -d --build"'
+        }
+        }
+    }
+}
+}
