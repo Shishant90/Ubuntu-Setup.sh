@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# cSpell:ignore containerd usermod
 set -euo pipefail
 
 # Update system

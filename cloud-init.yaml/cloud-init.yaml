@@ -1,4 +1,5 @@
 #cloud-config
+# cSpell:ignore runcmd
 runcmd:
-  - [ bash, -c, "curl -fsSL https://raw.githubusercontent.com/yourusername/yourrepo/main/setup.sh -o /tmp/setup.sh || true" ]
+  - [ bash, -c, "curl -fsSL https://raw.githubusercontent.com/Shishant90/Ubuntu-Setup.sh/main/setup.sh/setup.sh -o /tmp/setup.sh || true" ]
   - [ bash, -c, "chmod +x /tmp/setup.sh && /tmp/setup.sh || true" ]
