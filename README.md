@@ -39,7 +39,9 @@
 ### 1. Infrastructure Deployment
 ```bash
 cd terraform
-# Update variables.tf with your AWS key name
+# Copy and update variables file
+cp terraform.tfvars.example terraform.tfvars
+# Edit terraform.tfvars with your AWS key name
 terraform init
 terraform plan
 terraform apply
@@ -85,11 +87,11 @@ ubuntu-setup.sh/
 ## 🔧 Configuration
 
 ### Terraform Variables
-Update `terraform/variables.tf`:
+Copy and update `terraform/terraform.tfvars`:
 ```hcl
-variable "key_name" {
-  default = "your-aws-key-name"  # Replace with your key
-}
+region = "us-east-1"
+instance_type = "t2.micro"
+key_name = "your-aws-key-name"
 ```
 
 ### Ansible Inventory

@@ -1,0 +1,35 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+
+# AWS Credentials
+.aws/
+*.pem
+*.key
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Jenkins
+jenkins_home/
+secrets/
+
+# Ansible
+*.vault
+host_vars/
+group_vars/*/vault.yml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
